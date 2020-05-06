@@ -40,8 +40,18 @@ function insertPhotoCard(url, caption) {
    console.log("== photoCardSection:", photoCardSection);
 
    var photoCardContainer = document.getElementById("photo-card-container");
-   photoCardContainer.appendChild(photoCardSection);
+   // photoCardContainer.appendChild(photoCardSection);
+   photoCardContainer.insertBefore(
+     photoCardSection,
+     photoCardContainer.firstChild
+   );
 }
 
 insertPhotoCard('http://placekitten.com/480/480', "Luke as a kitty");
 insertPhotoCard('http://placekitten.com/480/480', "Another kitty");
+
+function removeLastPhotoCard() {
+  var photoCards = document.getElementsByClassName("photo-card");
+  photoCards[photoCards.length - 1].remove();
+  // photoCards[photoCards.length - 1].parentNode.removeChild(photoCards[photoCards.length - 1]);
+}
